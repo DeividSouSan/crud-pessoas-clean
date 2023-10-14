@@ -43,8 +43,8 @@ class Database:
 
             casos = {
                 "all": list(data.items()),
-                "keys": data.keys(),
-                "values": data.values()
+                "keys": list(data.keys()),
+                "values": list(data.values())
             }
 
             filtered = casos.get(filter)
