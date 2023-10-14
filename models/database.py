@@ -9,7 +9,7 @@ class Database:
     _instance = False
 
     def __new__(cls):
-        if not cls._instance:  # Ou seja, se cls._instance for None
+        if not cls._instance:  # Ou seja, se cls._instance == None
             cls._instance = super().__new__(cls)
         return cls._instance
 
