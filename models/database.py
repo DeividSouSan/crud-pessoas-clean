@@ -26,13 +26,13 @@ class Database:
         """
         with open(self.arq, 'r') as arq:
             data = json.loads(arq.read())
-        
+
         data[key] = value
 
         with open(self.arq, 'w') as arq:
             json.dump(data, arq, indent=4)
 
-        print('[CRIANDO UM NOVO ITEM NO BD]')
+        return {key: value}
 
     def read(self, filter):
         """
@@ -42,7 +42,7 @@ class Database:
             data = json.loads(arq.read())
 
             casos = {
-                "all": data.items(),
+                "all": list(data.items()),
                 "keys": data.keys(),
                 "values": data.values()
             }
@@ -50,12 +50,12 @@ class Database:
             filtered = casos.get(filter)
 
             return filtered
-        
+
     def update(self, data):
-        print('[ATUALIZANDO UM ITEM NO BD]')
+        raise NotImplementedError
 
     def delete(self, data):
-        print('[DELETANDO UM ITEM NO BD]')
+        raise NotImplementedError
 
     def execute(self, command, data=None):
         allowedFunctions = {
